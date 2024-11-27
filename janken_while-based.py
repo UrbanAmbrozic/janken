@@ -12,6 +12,23 @@ def zmaga(vnos: str, poteza_prog: str) -> bool | None:
     else:
         return(False)
     
+def sporočilo(vnos: str, poteza_prog: str, rezultat: bool) -> None:
+    print("---------------------------------------")
+    print("---------------------------------------")
+    print(f"    Tvoja poteza:    {vnos}")
+    print(f"    Moja poteza:     {poteza_prog}")
+    print("---------------------------------------")
+
+    if rezultat is None:
+        print("    Izenačena igra...")
+    elif rezultat is True:
+        print("    Zmaga je tvoja!")
+    elif rezultat is False:
+        print("    Več sreče prihodnjič.")
+    
+    print("---------------------------------------")
+    print("---------------------------------------")
+    
 def main() -> None:
     poteze: list[str] = ['kamen', 'papir', 'škarje']
     
@@ -27,24 +44,10 @@ def main() -> None:
 
         rezultat = zmaga(vnos, poteza_prog)
 
-        print("---------------------------------------")
-        print("---------------------------------------")
-        print(f"    Tvoja poteza:    {vnos}")
-        print(f"    Moja poteza:     {poteza_prog}")
-        print("---------------------------------------")
-
-        if rezultat is None:
-            print("    Izenačena igra...")
-        elif rezultat is True:
-            print("    Zmaga je tvoja!")
-        elif rezultat is False:
-            print("    Več sreče prihodnjič.")
-        
-        print("---------------------------------------")
-        print("---------------------------------------")
+        sporočilo(vnos, poteza_prog, rezultat)
 
         while True:
-            odgovor = input("Ali želiš igrati ponovno? (da/ne) ")
+            odgovor = input("Ali želiš igrati ponovno? (da/ne): ")
 
             if odgovor == 'da':
                 break
